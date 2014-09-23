@@ -19,7 +19,7 @@
     </ListView>
     
     <EditText
-        android:id="@+id/usertext"
+        android:id="@+id/newtext"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:scrollbars="horizontal" />
