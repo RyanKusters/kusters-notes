@@ -1,7 +1,9 @@
 package com.example.kusters_notes;
 
+import java.io.Serializable;
 
-public class Note
+
+public class Note implements Serializable
 {
 
 	private String usertext;
@@ -38,8 +40,13 @@ public class Note
 	
 	@Override
 	public String toString(){
-		if (this.check){return "\u2611" + this.usertext;}
-		else {return "\u2610" + this.usertext;}
+		return  this.usertext;
+	}
+	
+	public int getIcon(){
+		if (this.check){return R.drawable.checkedbox;}
+		else {return R.drawable.checkbox;
+		}
 	}
 	
 }

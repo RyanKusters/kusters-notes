@@ -15,7 +15,6 @@
         android:layout_height="263dp"
         android:layout_weight="1"
         android:scrollbars="vertical" >
-
     </ListView>
     
     <EditText
@@ -28,9 +27,6 @@
          android:id="@+id/add"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/notelist"
-         android:layout_below="@+id/notelist"
-        
          android:text="Add Note" />
 
 </LinearLayout>
