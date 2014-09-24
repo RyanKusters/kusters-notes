@@ -9,8 +9,12 @@ import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView.MultiChoiceModeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -37,9 +41,11 @@ public class TODOMainActivity extends Activity
 		total_num_notes = 0;
 		total_num_checked = 0;
 		total_num_unchecked = 0;
+		NoteList = new ArrayList<Note>();
+		NoteListAdapter = new ArrayAdapter<Note>(this,R.layout.note_display,NoteList);
 		
 		NoteListView = (ListView) findViewById(R.id.notelist);
-        NoteListViewAdapter = new ListViewAdapter(this, R.layout.note_display, NoteList);
+        NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
 		
 		NoteListView.setAdapter(NoteListAdapter);
 		
@@ -51,6 +57,34 @@ public class TODOMainActivity extends Activity
 		//www.androidbegin.com/tutorial/android-delet-multiple-selected-items-listview-tutorial/
 		//creativecommons.org/licenses/by-sa/3.0/deed.en_GB
 		//And Share Alike
+		
+		/*NoteListView.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3)
+			{
+
+				addNote();
+				
+			}
+		});*/
+		
+		Button addNote = (Button) findViewById(R.id.add);
+		addNote.setOnClickListener(new View.OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+			
+				String text = notetext.getText().toString();
+				Note newNote = new Note(text);
+				NoteList.add(newNote);
+				NoteListViewAdapter.notifyDataSetChanged();
+				
+				
+			}
+		});
 		
 		NoteListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 		NoteListView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
@@ -69,8 +103,6 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
-						return true;
-					case R.id.add:
 						return true;
 					default:
 						return false;
@@ -134,15 +166,9 @@ public class TODOMainActivity extends Activity
 		
 	}*/
 	
-	public void AddNote(){
-		String text = notetext.getText().toString();
-		Note newNote = new Note(text);
-		NoteList.add(newNote);
-		total_num_notes = total_num_notes + 1;
-		total_num_unchecked = total_num_unchecked + 1;
-		
-		
-	}
+	
+	
+	
 	
 	
 }

@@ -36,6 +36,7 @@ public class Note
 		return this.archive;
 	}
 	
+	@Override
 	public String toString(){
 		if (this.check){return "\u2611" + this.usertext;}
 		else {return "\u2610" + this.usertext;}

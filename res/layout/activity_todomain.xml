@@ -30,7 +30,7 @@
          android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/notelist"
          android:layout_below="@+id/notelist"
-         android:onClick="AddNote"
+        
          android:text="Add Note" />
 
 </LinearLayout>
