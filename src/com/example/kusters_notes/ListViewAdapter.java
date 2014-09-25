@@ -5,14 +5,13 @@ import java.util.ArrayList;
 
 
 import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Note;
+
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -23,19 +22,19 @@ import android.widget.TextView;
 		//creativecommons.org/licenses/by-sa/3.0/deed.en_GB
 		//And Share Alike
 
-public class ListViewAdapter extends ArrayAdapter<Note>
+public class ListViewAdapter extends ArrayAdapter<MyNote>
 {
 
 	Context context;
 	LayoutInflater inflater;
-	ArrayList<com.example.kusters_notes.Note> NoteList;
+	ArrayList<MyNote> NoteList;
 	private SparseBooleanArray mySelectedItemIds;
 	
-	public ListViewAdapter(Context context, int resourceId, ArrayList<com.example.kusters_notes.Note> NoteList){
-		super(context,resourceId);
+	public ListViewAdapter(Context context, int resourceId, ArrayList<MyNote> noteList2){
+		super(context,resourceId, noteList2);
 		mySelectedItemIds = new SparseBooleanArray();
 		this.context = context;
-		this.NoteList = NoteList;
+		this.NoteList = noteList2;
 		inflater = LayoutInflater.from(context);
 	}
 	
@@ -44,32 +43,33 @@ public class ListViewAdapter extends ArrayAdapter<Note>
 		TextView notetext;
 	}
 	
-	public View getView(int position, android.view.View view, ViewGroup parent){
+	@Override
+	public View getView(int position, View view, ViewGroup parent){
 		final ViewHolder holder;
 		if (view == null){
 			holder = new ViewHolder();
 			view = inflater.inflate(R.layout.listview_item,null);
 			holder.icon = (CheckBox) view.findViewById(R.id.icon);
-			//holder.notetext = (TextView) view.findViewById(R.id.notetext);
+			holder.notetext = (TextView) view.findViewById(R.id.notetext);
 			
 			view.setTag(holder);
 		} else{
 			holder = (ViewHolder) view.getTag();
 		}
 		holder.icon.setChecked(NoteList.get(position).GetCheck());
-		holder.icon.setText(NoteList.get(position).toString());
-		//holder.notetext.setText(NoteList.get(position).toString());
+		//holder.icon.setText(NoteList.get(position).toString());
+	    holder.notetext.setText(NoteList.get(position).toString());
 		
 		return view;
 	}
 	
 	@Override
-	public void remove(Note object){
+	public void remove(MyNote object){
 		NoteList.remove(object);
 		notifyDataSetChanged();
 	}
 	
-	public ArrayList<com.example.kusters_notes.Note> getNote(){
+	public ArrayList<MyNote> getNote(){
 		return NoteList;
 	}
 	
