@@ -29,6 +29,7 @@ public class TODOMainActivity extends Activity
 	private Integer total_num_notes;
 	private Integer total_num_checked;
 	private Integer total_num_unchecked;
+	private GsonDataManager gson;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +49,8 @@ public class TODOMainActivity extends Activity
         NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
 		
 		NoteListView.setAdapter(NoteListViewAdapter);
+		gson = new GsonDataManager(this);
+		//gson.saveTweets(NoteList);
 		
 		
 		
@@ -81,7 +84,7 @@ public class TODOMainActivity extends Activity
 				MyNote newNote = new MyNote(text);
 				NoteList.add(newNote);
 				NoteListViewAdapter.notifyDataSetChanged();
-				
+				gson.saveTweets(NoteList);
 				
 			}
 		});
@@ -103,6 +106,7 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
+						gson.saveTweets(NoteList);
 						return true;
 					case R.id.check:
 						SparseBooleanArray selected1 = NoteListViewAdapter.getSelectedIds();
@@ -114,6 +118,7 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
+						gson.saveTweets(NoteList);
 						return true;
 					case R.id.uncheck:
 						SparseBooleanArray selected2 = NoteListViewAdapter.getSelectedIds();
@@ -125,6 +130,7 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
+						gson.saveTweets(NoteList);
 						return true;
 					case R.id.archive:
 						SparseBooleanArray selected3 = NoteListViewAdapter.getSelectedIds();
@@ -136,6 +142,7 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
+						gson.saveTweets(NoteList);
 						return true;
 					case R.id.unarchive:
 						SparseBooleanArray selected4 = NoteListViewAdapter.getSelectedIds();
@@ -147,6 +154,7 @@ public class TODOMainActivity extends Activity
 							}
 						}
 						mode.finish();
+						gson.saveTweets(NoteList);
 						return true;
 					default:
 						return false;
@@ -210,11 +218,19 @@ public class TODOMainActivity extends Activity
 		return true;
 	}
 	
-	/*@Override
-	protected void onStart() {
+	@Override
+	protected void onPause() {
+		super.onPause();
+		gson.saveTweets(NoteList);
+	}
+	
+	@Override
+	protected void onStart(){
 		super.onStart();
-		
-	}*/
+		NoteList = gson.loadNotes();
+		NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
+		NoteListView.setAdapter(NoteListViewAdapter);
+	}
 	
 	
 	
