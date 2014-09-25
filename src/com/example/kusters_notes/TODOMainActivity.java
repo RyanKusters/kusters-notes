@@ -104,6 +104,50 @@ public class TODOMainActivity extends Activity
 						}
 						mode.finish();
 						return true;
+					case R.id.check:
+						SparseBooleanArray selected1 = NoteListViewAdapter.getSelectedIds();
+						for (int i = (selected1.size()-1); i >= 0; i-- ){
+							if (selected1.valueAt(i)){
+								Note selecteditem = NoteListAdapter.getItem(selected1.keyAt(i));
+								selecteditem.SetCheck(true);
+								NoteListAdapter.notifyDataSetChanged();
+							}
+						}
+						mode.finish();
+						return true;
+					case R.id.uncheck:
+						SparseBooleanArray selected2 = NoteListViewAdapter.getSelectedIds();
+						for (int i = (selected2.size()-1); i >= 0; i-- ){
+							if (selected2.valueAt(i)){
+								Note selecteditem = NoteListAdapter.getItem(selected2.keyAt(i));
+								selecteditem.SetCheck(false);
+								NoteListAdapter.notifyDataSetChanged();
+							}
+						}
+						mode.finish();
+						return true;
+					case R.id.archive:
+						SparseBooleanArray selected3 = NoteListViewAdapter.getSelectedIds();
+						for (int i = (selected3.size()-1); i >= 0; i-- ){
+							if (selected3.valueAt(i)){
+								Note selecteditem = NoteListAdapter.getItem(selected3.keyAt(i));
+								selecteditem.SetArchive(true);
+								NoteListAdapter.notifyDataSetChanged();
+							}
+						}
+						mode.finish();
+						return true;
+					case R.id.unarchive:
+						SparseBooleanArray selected4 = NoteListViewAdapter.getSelectedIds();
+						for (int i = (selected4.size()-1); i >= 0; i-- ){
+							if (selected4.valueAt(i)){
+								Note selecteditem = NoteListAdapter.getItem(selected4.keyAt(i));
+								selecteditem.SetArchive(false);
+								NoteListAdapter.notifyDataSetChanged();
+							}
+						}
+						mode.finish();
+						return true;
 					default:
 						return false;
 				}
