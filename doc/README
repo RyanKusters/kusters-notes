@@ -1,0 +1,43 @@
+kusters-notes
+=============
+
+301 Assignment
+This App is meant to take notes.
+
+It is licensed under CC with attribution and sharealike
+creativecommons.org/licenses/by-sa/3.0/deed.en_GB
+
+-It is able to record notes. enter the note text in field just above the button "add note" then hit the button.
+
+-Multiple notes may be selected and acted upon. Long tap
+the first note to bring up the menu then normal tap all other notes to include or not include, visual cue failed but functionality of selection remains. use menu expander to find all use buttons.
+
+-Notes may be checked and unchecked, with visualfeedback
+
+-Notes are meant to be archived and "Hidden"
+ The Archive functionality was not able to "hide" notes
+ it instead flags them as Archived by appending the word.
+
+-Notes may be deleted
+
+-notes are meant to be emailed, this function was not testable on the emulator and i do not have an android phone. nor could i get one in time. The actions are setup though if your setup can email, please try and please let me know if worked.
+
+-Summary returns a new view with information about the notes. hit "return to notes" to go back. 
+
+SOURCES 
+I adapted and used code or syntax understandings from the following sites.
+I also consulted with several peers who let me know of the existance of widgets which I did and did not use.
+
+-I drew the png files checkbox and checkedbox in paint.
+
+- MultiChoiceMode code set and ListViewAdapter adapted from www.androidbegin.com
+  	This project has code adapted from the above website under Creative Commons
+		This Attribution is intended to conform to the Attribution Clause of the CC License
+		www.androidbegin.com/tutorial/android-delet-multiple-selected-items-listview-tutorial/
+		creativecommons.org/licenses/by-sa/3.0/deed.en_GB
+		And Share Alike
+    
+-For the EMail code I adapted
+http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
+
+-GSonDatamanager was adapted from lab 3 lonelytwitterGson

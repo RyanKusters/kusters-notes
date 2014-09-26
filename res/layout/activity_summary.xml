@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+	    android:id="@+id/summarytitle"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" 
+	    android:text="Summary of Notes"> 
+	</TextView>
+	<TextView
+	    android:id="@+id/totalall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"> 
+	</TextView>
+	<TextView
+	    android:id="@+id/totalchecked"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	     > 
+	</TextView>
+	<TextView
+	    android:id="@+id/totalunchecked"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	     > 
+	</TextView>
+	<TextView
+	    android:id="@+id/totalarchieved"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    								 >
+	 </TextView>
+	<TextView
+	    android:id="@+id/totalarchivedcheck"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    								 >
+	 </TextView> 
+     <TextView
+	    android:id="@+id/totalarchiveduncheck"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    								 >
+	 </TextView>
+	<Button
+         android:id="@+id/main_return"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Return to Notes" />
+
+</LinearLayout>

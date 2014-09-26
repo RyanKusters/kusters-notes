@@ -57,9 +57,8 @@ public class ListViewAdapter extends ArrayAdapter<MyNote>
 		} else{
 			holder = (ViewHolder) view.getTag();
 		}
-	
-		holder.icon.setImageResource(NoteList.get(position).getIcon());
 		
+		holder.icon.setImageResource(NoteList.get(position).getIcon());
 	    holder.notetext.setText(NoteList.get(position).toString());
 		
 		return view;

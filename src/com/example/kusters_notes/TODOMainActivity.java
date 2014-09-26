@@ -76,15 +76,13 @@ public class TODOMainActivity extends Activity
 			
 			@Override
 			public void onClick(View v)
-			{
-			
+			{			
 				String text = notetext.getText().toString();
 				MyNote newNote = new MyNote(text);
 				NoteList.add(newNote);
 				NoteListViewAdapter.notifyDataSetChanged();
 				notetext.setText("");
-				gson.saveTweets(NoteList);
-				
+				gson.saveTweets(NoteList);		
 			}
 		});
 		
@@ -104,8 +102,8 @@ public class TODOMainActivity extends Activity
 								NoteListViewAdapter.remove(selecteditem);
 							}
 						}
-						mode.finish();
 						gson.saveTweets(NoteList);
+						mode.finish();
 						return true;
 					case R.id.check:
 						SparseBooleanArray selected1 = NoteListViewAdapter.getSelectedIds();
@@ -113,11 +111,12 @@ public class TODOMainActivity extends Activity
 							if (selected1.valueAt(i)){
 								MyNote selecteditem = NoteListViewAdapter.getItem(selected1.keyAt(i));
 								selecteditem.SetCheck(true);
-								NoteListViewAdapter.notifyDataSetChanged();
+								
 							}
 						}
-						mode.finish();
+						NoteListViewAdapter.notifyDataSetChanged();
 						gson.saveTweets(NoteList);
+						mode.finish();
 						return true;
 					case R.id.uncheck:
 						SparseBooleanArray selected2 = NoteListViewAdapter.getSelectedIds();
@@ -125,11 +124,12 @@ public class TODOMainActivity extends Activity
 							if (selected2.valueAt(i)){
 								MyNote selecteditem = NoteListViewAdapter.getItem(selected2.keyAt(i));
 								selecteditem.SetCheck(false);
-								NoteListViewAdapter.notifyDataSetChanged();
+								
 							}
 						}
-						mode.finish();
+						NoteListViewAdapter.notifyDataSetChanged();
 						gson.saveTweets(NoteList);
+						mode.finish();
 						return true;
 					case R.id.archive:
 						SparseBooleanArray selected3 = NoteListViewAdapter.getSelectedIds();
@@ -137,11 +137,12 @@ public class TODOMainActivity extends Activity
 							if (selected3.valueAt(i)){
 								MyNote selecteditem = NoteListViewAdapter.getItem(selected3.keyAt(i));
 								selecteditem.SetArchive(true);
-								NoteListViewAdapter.notifyDataSetChanged();
+								
 							}
 						}
-						mode.finish();
+						NoteListViewAdapter.notifyDataSetChanged();
 						gson.saveTweets(NoteList);
+						mode.finish();
 						return true;
 					case R.id.unarchive:
 						SparseBooleanArray selected4 = NoteListViewAdapter.getSelectedIds();
@@ -149,11 +150,12 @@ public class TODOMainActivity extends Activity
 							if (selected4.valueAt(i)){
 								MyNote selecteditem = NoteListViewAdapter.getItem(selected4.keyAt(i));
 								selecteditem.SetArchive(false);
-								NoteListViewAdapter.notifyDataSetChanged();
+								
 							}
 						}
-						mode.finish();
+						NoteListViewAdapter.notifyDataSetChanged();
 						gson.saveTweets(NoteList);
+						mode.finish();
 						return true;
 					case R.id.email:
 						//http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
@@ -170,15 +172,12 @@ public class TODOMainActivity extends Activity
 						return true;
 					default:
 						return false;
-				}
-				
-			
+				}							
 			}
 
 			@Override
 			public boolean onCreateActionMode(ActionMode mode, Menu menu)
 			{
-
 				mode.getMenuInflater().inflate(R.menu.todomain, menu);
 				return true;
 			}
@@ -186,15 +185,12 @@ public class TODOMainActivity extends Activity
 			@Override
 			public void onDestroyActionMode(ActionMode mode)
 			{
-
-				NoteListViewAdapter.removeselection();
-				
+				NoteListViewAdapter.removeselection();				
 			}
 
 			@Override
 			public boolean onPrepareActionMode(ActionMode mode, Menu menu)
 			{
-
 				// TODO Auto-generated method stub
 				return false;
 			}
@@ -203,24 +199,14 @@ public class TODOMainActivity extends Activity
 			public void onItemCheckedStateChanged(ActionMode mode,
 					int position, long id, boolean checked)
 			{
-
-				NoteListViewAdapter.toggleSelection(position);
-				
-				
+				NoteListViewAdapter.toggleSelection(position);				
 			}
-			
-			
-			
-		});
-		
-		
-		
+		});		
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.todomain, menu);
 		return true;
@@ -238,10 +224,5 @@ public class TODOMainActivity extends Activity
 		NoteList = gson.loadNotes();
 		NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
 		NoteListView.setAdapter(NoteListViewAdapter);
-	}
-	
-	
-	
-	
-	
+	}	
 }
