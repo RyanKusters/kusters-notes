@@ -5,15 +5,13 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView.MultiChoiceModeListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,14 +20,11 @@ public class TODOMainActivity extends Activity
 {
 	
 	private ArrayList<MyNote> NoteList;
-	//private ArrayAdapter<MyNote> NoteListAdapter; 
 	private EditText notetext;
 	private ListView NoteListView;
 	private ListViewAdapter NoteListViewAdapter;
-	private Integer total_num_notes;
-	private Integer total_num_checked;
-	private Integer total_num_unchecked;
 	private GsonDataManager gson;
+	private Intent itentSummary;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -39,18 +34,15 @@ public class TODOMainActivity extends Activity
 		setContentView(R.layout.activity_todomain);
 		
 		notetext = (EditText) findViewById(R.id.newtext);
-		total_num_notes = 0;
-		total_num_checked = 0;
-		total_num_unchecked = 0;
 		NoteList = new ArrayList<MyNote>();
-		//NoteListAdapter = new ArrayAdapter<MyNote>(this,R.layout.listview_item,NoteList);
+		
 		
 		NoteListView = (ListView) findViewById(R.id.notelist);
         NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
 		
 		NoteListView.setAdapter(NoteListViewAdapter);
 		gson = new GsonDataManager(this);
-		//gson.saveTweets(NoteList);
+	    itentSummary = new Intent(this,Summary_Activity.class);
 		
 		
 		
@@ -61,16 +53,21 @@ public class TODOMainActivity extends Activity
 		//creativecommons.org/licenses/by-sa/3.0/deed.en_GB
 		//And Share Alike
 		
-		/*NoteListView.setOnItemClickListener(new OnItemClickListener(){
+		Button summary = (Button) findViewById(R.id.summary);
+		summary.setOnClickListener(new View.OnClickListener()
+		{
+			
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3)
+			public void onClick(View v)
 			{
-
-				addNote();
-				
+			
+				Summary current_stat = new Summary(NoteList);
+				Bundle current_bag = new Bundle();
+				current_bag.putSerializable("summary_bag", current_stat);
+				itentSummary.putExtras(current_bag);
+				startActivity(itentSummary);
 			}
-		});*/
+		});
 		
 		Button addNote = (Button) findViewById(R.id.add);
 		addNote.setOnClickListener(new View.OnClickListener()
@@ -197,11 +194,7 @@ public class TODOMainActivity extends Activity
 				
 			}
 			
-			/*@Override
-			public void onSaveInstanceState(Bundle savedInstanceState){
-				super.onSaveInstanceState(savedInstanceState);
-				savedInstanceState.pu
-			}*/
+			
 			
 		});
 		
@@ -231,7 +224,6 @@ public class TODOMainActivity extends Activity
 		NoteListViewAdapter = new ListViewAdapter(this, R.layout.listview_item, NoteList);
 		NoteListView.setAdapter(NoteListViewAdapter);
 	}
-	
 	
 	
 	

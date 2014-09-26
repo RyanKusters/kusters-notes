@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +39,6 @@ public class ListViewAdapter extends ArrayAdapter<MyNote>
 	}
 	
 	private class ViewHolder {
-		//CheckBox icon;
 		ImageView icon;
 		TextView notetext;
 	}
@@ -51,7 +49,7 @@ public class ListViewAdapter extends ArrayAdapter<MyNote>
 		if (view == null){
 			holder = new ViewHolder();
 			view = inflater.inflate(R.layout.listview_item,null);
-			//holder.icon = (CheckBox) view.findViewById(R.id.icon);
+			
 			holder.icon = (ImageView) view.findViewById(R.id.icon);
 			holder.notetext = (TextView) view.findViewById(R.id.notetext);
 			
@@ -59,9 +57,9 @@ public class ListViewAdapter extends ArrayAdapter<MyNote>
 		} else{
 			holder = (ViewHolder) view.getTag();
 		}
-		//holder.icon.setChecked(NoteList.get(position).GetCheck());
+	
 		holder.icon.setImageResource(NoteList.get(position).getIcon());
-		//holder.icon.setText(NoteList.get(position).toString());
+		
 	    holder.notetext.setText(NoteList.get(position).toString());
 		
 		return view;

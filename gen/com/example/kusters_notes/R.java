@@ -26,21 +26,31 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int add=0x7f080002;
-        public static final int archive=0x7f080007;
-        public static final int check=0x7f080005;
-        public static final int delete=0x7f080009;
-        public static final int icon=0x7f080003;
-        public static final int newtext=0x7f080001;
-        public static final int notelist=0x7f080000;
-        public static final int notetext=0x7f080004;
-        public static final int unarchive=0x7f080008;
-        public static final int uncheck=0x7f080006;
+        public static final int add=0x7f08000a;
+        public static final int archive=0x7f080010;
+        public static final int check=0x7f08000e;
+        public static final int delete=0x7f080012;
+        public static final int icon=0x7f08000c;
+        public static final int main_return=0x7f080007;
+        public static final int newtext=0x7f080009;
+        public static final int notelist=0x7f080008;
+        public static final int notetext=0x7f08000d;
+        public static final int summary=0x7f08000b;
+        public static final int summarytitle=0x7f080000;
+        public static final int totalall=0x7f080001;
+        public static final int totalarchieved=0x7f080004;
+        public static final int totalarchivedcheck=0x7f080005;
+        public static final int totalarchiveduncheck=0x7f080006;
+        public static final int totalchecked=0x7f080002;
+        public static final int totalunchecked=0x7f080003;
+        public static final int unarchive=0x7f080011;
+        public static final int uncheck=0x7f08000f;
     }
     public static final class layout {
-        public static final int activity_todomain=0x7f030000;
-        public static final int listview_item=0x7f030001;
-        public static final int note_display=0x7f030002;
+        public static final int activity_summary=0x7f030000;
+        public static final int activity_todomain=0x7f030001;
+        public static final int listview_item=0x7f030002;
+        public static final int note_display=0x7f030003;
     }
     public static final class menu {
         public static final int todomain=0x7f070000;
