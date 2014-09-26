@@ -26,18 +26,31 @@ the first note to bring up the menu then normal tap all other notes to include o
 
 SOURCES 
 I adapted and used code or syntax understandings from the following sites.
-I also consulted with several peers who let me know of the existance of widgets which I did and did not use.
+I consulted with the following Students."
+
+Stefan Martynkiew
+- who informed me of the need for onclick listeners
+- told me an intent can be used to send emails
+- and other ideas I can't remember to specify properly.
+
+Brittany Lamorie and Cody (Last Name Unknown)
+- told me about checkbox widgets, which I attemtpted to use but ended up dropping.
 
 -I drew the png files checkbox and checkedbox in paint.
 
+http://www.androidbegin.com/
 - MultiChoiceMode code set and ListViewAdapter adapted from www.androidbegin.com
   	This project has code adapted from the above website under Creative Commons
 		This Attribution is intended to conform to the Attribution Clause of the CC License
 		www.androidbegin.com/tutorial/android-delet-multiple-selected-items-listview-tutorial/
 		creativecommons.org/licenses/by-sa/3.0/deed.en_GB
 		And Share Alike
-    
+
+USER: fiXedd
+http://stackoverflow.com/users/76835/fixedd
 -For the EMail code I adapted
 http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
 
 -GSonDatamanager was adapted from lab 3 lonelytwitterGson
+originally from https://github.com/dfserrano/LonelyTwitterGson
+
