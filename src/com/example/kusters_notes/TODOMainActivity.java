@@ -15,6 +15,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class TODOMainActivity extends Activity
 {
@@ -81,6 +82,7 @@ public class TODOMainActivity extends Activity
 				MyNote newNote = new MyNote(text);
 				NoteList.add(newNote);
 				NoteListViewAdapter.notifyDataSetChanged();
+				notetext.setText("");
 				gson.saveTweets(NoteList);
 				
 			}
@@ -152,6 +154,19 @@ public class TODOMainActivity extends Activity
 						}
 						mode.finish();
 						gson.saveTweets(NoteList);
+						return true;
+					case R.id.email:
+						//http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
+						Intent emailIntent = new Intent(Intent.ACTION_SEND);
+						emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Notes Delivered!");
+						emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of Email");
+						try {
+							startActivity(emailIntent.createChooser(emailIntent,"Select Mailer"));
+						}
+						catch(android.content.ActivityNotFoundException e){
+							Toast.makeText(TODOMainActivity.this, "Email clients not found.", Toast.LENGTH_SHORT).show();
+						}
+						mode.finish();
 						return true;
 					default:
 						return false;

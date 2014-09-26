@@ -30,6 +30,7 @@ public final class R {
         public static final int archive=0x7f080010;
         public static final int check=0x7f08000e;
         public static final int delete=0x7f080012;
+        public static final int email=0x7f080013;
         public static final int icon=0x7f08000c;
         public static final int main_return=0x7f080007;
         public static final int newtext=0x7f080009;
